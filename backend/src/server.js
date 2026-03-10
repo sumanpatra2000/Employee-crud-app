@@ -1,10 +1,9 @@
 import 'dotenv/config';                 // loads .env locally; no harm in Azure
-import express from 'express';
-// import cors from 'cors';
+import express from 'express'; import cors from 'cors';
 import { Sequelize, DataTypes } from 'sequelize';
 
 const app = express();
-//app.use(cors());                        // minimal; allows all origins
+app.use(cors());                        // minimal; allows all origins
 
 app.use(express.json());
 
@@ -55,3 +54,35 @@ try {
   console.error('DB connection failed', err);
   process.exit(1);
 }
+
+app.put('/api/employees/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { first_name, last_name, email, birthdate, salary } = req.body;
+    const [updated] = await Employee.update({
+      first_name,
+      last_name,
+      email,
+      birthdate: birthdate || null,
+      salary: salary === '' || salary === undefined ? null : Number(salary)
+    }, { where: { employee_id: id } });
+    if (updated) {
+      const updatedEmployee = await Employee.findOne({ where: { employee_id: id } });
+      res.json(updatedEmployee);
+    } else {
+      res.status(404).json({ error: 'Employee not found' });
+    }
+  } catch (e) { res.status(500).json({ error: 'Failed to update employee' }); }
+});
+
+app.delete('/api/employees/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await Employee.destroy({ where: { employee_id: id } });
+    if (deleted) {
+      res.json({ message: 'Employee deleted' });
+    } else {
+      res.status(404).json({ error: 'Employee not found' });
+    }
+  } catch (e) { res.status(500).json({ error: 'Failed to delete employee' }); }
+});

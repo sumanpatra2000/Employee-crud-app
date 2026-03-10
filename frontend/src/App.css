@@ -1,42 +1,143 @@
+/* Page background */
+
+body {
+  margin: 0;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+/* Container */
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Title */
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 25px;
+  font-weight: 700;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Table Card */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: linear-gradient(145deg,#0f172a,#1e293b);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Table Header */
+
+thead {
+  background: #0f172a;
 }
 
-.card {
-  padding: 2em;
+th {
+  text-align: left;
+  padding: 16px;
+  font-size: 14px;
+  letter-spacing: .08em;
+  color: #94a3b8;
 }
 
-.read-the-docs {
-  color: #888;
+/* Table Rows */
+
+td {
+  padding: 16px;
+  border-top: 1px solid #1e293b;
+}
+
+tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Buttons */
+
+button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+/* Edit Button */
+
+button:nth-child(1) {
+  background: #1d4ed8;
+  color: white;
+}
+
+button:nth-child(1):hover {
+  background: #2563eb;
+}
+
+/* Delete Button */
+
+button:nth-child(2) {
+  background: #7f1d1d;
+  color: white;
+}
+
+button:nth-child(2):hover {
+  background: #991b1b;
+}
+
+/* Form Card */
+
+form {
+  background: linear-gradient(145deg,#0f172a,#1e293b);
+  padding: 30px;
+  border-radius: 16px;
+}
+
+/* Inputs */
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #020617;
+  color: white;
+  font-size: 14px;
+}
+
+/* Input Focus */
+
+input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* Add Button */
+
+form button {
+  background: #34d399;
+  color: #022c22;
+  padding: 10px 16px;
+  font-weight: 700;
+}
+
+form button:hover {
+  background: #10b981;
+}
+td button {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 4px;
+}
+td:last-child {
+  white-space: nowrap;
 }
